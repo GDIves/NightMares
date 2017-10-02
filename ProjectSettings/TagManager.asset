@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - HelleAppear
-  - ScoreText
-  - HUDCanvas
   layers:
   - Default
   - TransparentFX

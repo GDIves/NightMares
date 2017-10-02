@@ -5,23 +5,20 @@ using UnityEngine;
 public class EnemyAppear : MonoBehaviour
 {
     public GameObject enemy;
-    public float appearTime;
-    public Transform[] appearPoints;
-    public PlayerHealthy playerHealthy;
-    
-    // Use this for initialization
-	void Start () 
-    {
-        InvokeRepeating("Appear", appearTime, appearTime);
-	}
+    public float appearRate;
+    private float nextAppear = 3;
 
-    void Appear()
-    {
-        if (playerHealthy.hp <= 0)
-        {
-            return;
-        }
-        int appearPointsIndex = Random.Range(0, appearPoints.Length);
-        GameObject.Instantiate(enemy, appearPoints[appearPointsIndex].position, appearPoints[appearPointsIndex].rotation);
-    }
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	    if (Time.time > nextAppear)
+	    {
+	        nextAppear = Time.time + appearRate;
+	        Instantiate(enemy, transform.position, transform.rotation);
+	    }
+	}
 }
